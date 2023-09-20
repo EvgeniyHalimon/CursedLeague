@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-import { BASE_URL, REFRESH } from '../shared/backendConstants';
-import { getAccessToken, saveTokens, getRefreshToken, removeTokens } from '../shared/utils/tokensWorksshop';
+import { BASE_URL, REFRESH } from '../shared/constants';
+import { getAccessToken, getRefreshToken, saveTokens, removeTokens } from '../shared/utils';
 
 const useAxios = () => {
   const accessToken = getAccessToken();

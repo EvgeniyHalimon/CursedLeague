@@ -1,11 +1,11 @@
 import { FC } from 'react';
 import { Navigate, Outlet } from 'react-router';
 
-interface IProtecedRoute{
+interface IProtectedRoute{
   user: string | null,
 }
 
-const ProtectedRoute: FC<IProtecedRoute> = ({ user }) => {
+const ProtectedRoute: FC<IProtectedRoute> = ({ user }) => {
   if (!user) {
     return <Navigate to='/' replace />;
   }

@@ -1,32 +1,26 @@
-import { FC, useState, useEffect } from 'react';
+import { useId } from 'react';
 
-import { createPairs, createTours } from '../shared/utils/createTours';
+import { useAppSelector } from '../hooks/reduxHooks';
 
-const players = [
-  'A',
-  'B',
-  'C',
-  'D',
-  'E',
-];
+import { PlayersForm } from '.';
 
-const Home: FC = () => {
-  const [matches, setMatches] = useState<string[][]>([]);
+const Home = () => {
+  const id = useId();
+  const { matches } = useAppSelector((state) => state.matchmaking);
 
-  useEffect(() => {
-    setMatches(createTours(createPairs(players), players));
-  }, []);
-  
   return (
-    <div>
-      {matches.map((match: string[], i: number) =>
-        <ul key={i} style={{ padding: '10px' }}>
-          {match.map((m: string, idx: number) =>
-            <li key={idx}>{m}</li>,
-          )}
-        </ul>,
-      )}
-    </div>
+    <>
+      <PlayersForm/>
+      <div>
+        {matches.map((match: string[], i: number) =>
+          <ul key={`${id}${i}`} style={{ padding: '10px' }}>
+            {match.map((m: string, idx: number) =>
+              <li key={`${id}${idx}`}>{m}</li>,
+            )}
+          </ul>,
+        )}
+      </div>
+    </>
   );
 };
 
