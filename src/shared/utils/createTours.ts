@@ -1,3 +1,5 @@
+import { ITournamentResults } from '../types';
+
 function makeRoundRobinPairings(players: string[]): string[][] {
   if (players.length % 2 == 1) {
     players.push('Отдыхает');
@@ -32,6 +34,36 @@ function makeRoundRobinPairings(players: string[]): string[][] {
   return tournamentPairings;
 }
 
+function countPoints(players: string[], matches: string[][], matchResults: string[][]): ITournamentResults[]{
+  const playerPoints: any = {};
+
+  players.forEach((player) => {
+    playerPoints[player] = 0;
+  });
+
+  for (let i = 0; i < matches.length; i++) {
+    const [playerA, playerB] = matches[i];
+    const [scoreA, scoreB] = matchResults[i];
+
+    if (scoreA > scoreB) {
+      playerPoints[playerA] += 3;
+    } else if (scoreA < scoreB) {
+      playerPoints[playerB] += 3;
+    } else if (scoreA === scoreB){
+      playerPoints[playerA] += 1;
+      playerPoints[playerB] += 1;
+    }
+  }
+  
+  const resultsArray = Object.keys(playerPoints).map((player) => ({
+    player,
+    points: playerPoints[player],
+  }));
+
+  return resultsArray.sort((a, b) => a.points > b.points ? -1 : 1);
+}
+
 export {
   makeRoundRobinPairings,
+  countPoints,
 };
