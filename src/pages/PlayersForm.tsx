@@ -1,12 +1,13 @@
-import { useId, useState, ChangeEvent } from 'react';
+import { useId, ChangeEvent } from 'react';
 
+import { useAppSelector } from '../hooks/reduxHooks';
 import useActions from '../hooks/useActions';
 import { localStorageKeys } from '../shared/constants';
 import { makeRoundRobinPairings } from '../shared/utils';
 
 const PlayersForm = () => {
   const id = useId();
-  const [players, setPlayers] = useState<string[]>([]);
+  const { players } = useAppSelector((state) => state.matchmaking);
   const action = useActions();
 
   const addPlayers = () => {
@@ -16,7 +17,7 @@ const PlayersForm = () => {
 
   const onChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     const addedPlayers = e.target.value.split(',');
-    setPlayers(addedPlayers);
+    action.setPlayers(addedPlayers);
   };
 
   return (
@@ -29,3 +30,4 @@ const PlayersForm = () => {
 };
 
 export { PlayersForm };
+

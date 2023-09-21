@@ -1,3 +1,21 @@
 @import "shared/resets/normalize.scss";
 @import "shared/resets/reset.scss";
 @import "shared/resets/typography.scss";
+
+.match{
+    display: flex;
+    align-items: center;
+}
+
+.player{
+    font-weight: 600;
+    font-size: 26px;
+}
+
+.score{
+    border: none;
+    font-weight: 600;
+    font-size: 20px;
+    width: 50px;
+    text-align: center;
+}
