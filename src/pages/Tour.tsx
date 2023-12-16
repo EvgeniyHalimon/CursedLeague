@@ -11,11 +11,11 @@ const Tour: FC<{match: string[]}> = ({ match }) => {
   });
 
   return (
-    <>
+    <div>
       {splitByGame.map((game: string[], idx: number) =>
         <Game playerOne={game[0]} playerTwo={game[1]} key={`${id}${idx}`}/>
       )}
-    </>
+    </div>
   );
 };
 

@@ -8,7 +8,6 @@ import { makeRoundRobinPairings } from '../shared/utils';
 const PlayersForm = () => {
   const id = useId();
   const { players } = useAppSelector((state) => state.matchmaking);
-  console.log('🚀 ~ file: PlayersForm.tsx:11 ~ PlayersForm ~ players:', players);
   const action = useActions();
 
   const addPlayers = () => {
@@ -23,9 +22,9 @@ const PlayersForm = () => {
 
   return (
     <>
-      <textarea name={id} id={id} onChange={onChange} value={players}>
+      <textarea name={id} id={id} onChange={onChange} value={players} className='textarea'>
       </textarea>
-      <button onClick={addPlayers}>Submit</button>
+      <button onClick={addPlayers} className='submitButton'>Submit</button>
     </>
   );
 };

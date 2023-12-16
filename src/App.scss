@@ -4,5 +4,17 @@
     align-items: center;
     text-align: center;
     padding: 2.5rem;
-    height: 100vh;
+    min-height: 100vh;
+    background: linear-gradient(to bottom right, #87CEEB, #ADD8E6);
+}
+
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
 }

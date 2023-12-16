@@ -1,8 +1,8 @@
 import { ChangeEvent, FC, useState } from 'react';
 
-interface IGame{
-    playerOne:string, 
-    playerTwo:string
+interface IGame {
+  playerOne: string,
+  playerTwo: string
 }
 
 const Game: FC<IGame> = ({ playerOne, playerTwo }) => {
@@ -13,23 +13,25 @@ const Game: FC<IGame> = ({ playerOne, playerTwo }) => {
   };
 
   return (
-    <li  className='match'>
+    <li className='match'>
       <p className='player'>{playerOne.trim()}</p>
-      <input 
-        type='number' 
-        className='score' 
-        value={score.playerOne} 
-        onChange={(e) => setPlayerScore(e, 'playerOne')}
-        min={0}
-      />
-      <span> : </span>
-      <input 
-        type='number' 
-        className='score' 
-        value={score.playerTwo} 
-        onChange={(e) => setPlayerScore(e, 'playerTwo')}
-        min={0}
-      />
+      <div className='RAT'>
+        <input
+          type='number'
+          className='score'
+          value={score.playerOne}
+          onChange={(e) => setPlayerScore(e, 'playerOne')}
+          min={0}
+        />
+        <span> : </span>
+        <input
+          type='number'
+          className='score'
+          value={score.playerTwo}
+          onChange={(e) => setPlayerScore(e, 'playerTwo')}
+          min={0}
+        />
+      </div>
       <p className='player'>{playerTwo.trim()}</p>
     </li>
   );

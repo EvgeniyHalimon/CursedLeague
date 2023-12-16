@@ -10,9 +10,9 @@ const Matches = () => {
   const { matches } = useAppSelector((state) => state.matchmaking);
 
   return (
-    <div>
+    <div style={{ width: '100vw' }}>
       {matches.map((match: string[], i: number) =>
-        <ul key={`${id}${i}`} style={{ padding: '10px' }}>
+        <ul key={`${id}${i}`} className='matches'>
           <Tour match={match}/>
         </ul>
       )}
