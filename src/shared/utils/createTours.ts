@@ -1,17 +1,19 @@
 import { ITournamentResults } from '../types';
 
 function makeRoundRobinPairings(players: string[]): string[][] {
-  if (players.length % 2 == 1) {
-    players.push('Отдыхает');
+  const modifiedPlayers = [...players];
+
+  if (modifiedPlayers.length % 2 == 1) {
+    modifiedPlayers.push('Отдыхает');
   }
 
-  const playerCount = players.length;
+  const playerCount = modifiedPlayers.length;
   const rounds = playerCount - 1;
   const half = playerCount / 2;
 
   const tournamentPairings: string[][] = [];
 
-  const playerIndexes: any = players.map((_, i) => i).slice(1);
+  const playerIndexes: any = modifiedPlayers.map((_, i) => i).slice(1);
 
   for (let round = 0; round < rounds; round++) {
     const roundPairings = [];
@@ -21,7 +23,7 @@ function makeRoundRobinPairings(players: string[]): string[][] {
     const secondHalf = newPlayerIndexes.slice(half, playerCount).reverse();
 
     for (let i = 0; i < firstHalf.length; i++) {
-      roundPairings.push(`${players[firstHalf[i]]} : ${players[secondHalf[i]]}`);
+      roundPairings.push(`${modifiedPlayers[firstHalf[i]]} : ${modifiedPlayers[secondHalf[i]]}`);
     }
 
     playerIndexes.push(playerIndexes.shift());
@@ -30,8 +32,11 @@ function makeRoundRobinPairings(players: string[]): string[][] {
     tournamentPairings.push(roundPairings);
     console.log('TOUR: ',`${round}`, 'tournamentPairings', tournamentPairings);
   }
+  const containsWord = (element: string) => element.includes('Отдыхает');
 
-  return tournamentPairings;
+  return tournamentPairings.map(pairings =>
+      pairings.filter(phrase => !containsWord(phrase)),
+  );
 }
 
 function countPoints(players: string[], matches: string[][], matchResults: string[][]): ITournamentResults[]{

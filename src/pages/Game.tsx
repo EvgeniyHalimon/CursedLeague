@@ -13,25 +13,25 @@ const Game: FC<IGame> = ({ playerOne, playerTwo }) => {
   };
 
   return (
-    <>
-      <li  className='match'>
-        <p className='player'>{playerOne}</p>
-        <input 
-          type='number' 
-          className='score' 
-          value={score.playerOne} 
-          onChange={(e) => setPlayerScore(e, 'playerOne')}
-        />
-        <span> : </span>
-        <input 
-          type='number' 
-          className='score' 
-          value={score.playerTwo} 
-          onChange={(e) => setPlayerScore(e, 'playerTwo')}
-        />
-        <p className='player'>{playerTwo}</p>
-      </li>,
-    </>
+    <li  className='match'>
+      <p className='player'>{playerOne.trim()}</p>
+      <input 
+        type='number' 
+        className='score' 
+        value={score.playerOne} 
+        onChange={(e) => setPlayerScore(e, 'playerOne')}
+        min={0}
+      />
+      <span> : </span>
+      <input 
+        type='number' 
+        className='score' 
+        value={score.playerTwo} 
+        onChange={(e) => setPlayerScore(e, 'playerTwo')}
+        min={0}
+      />
+      <p className='player'>{playerTwo.trim()}</p>
+    </li>
   );
 };
 

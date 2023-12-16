@@ -1,3 +1,4 @@
+/* eslint-disable comma-dangle */
 import { useId } from 'react';
 
 import { useAppSelector } from '../hooks/reduxHooks';
@@ -13,7 +14,7 @@ const Matches = () => {
       {matches.map((match: string[], i: number) =>
         <ul key={`${id}${i}`} style={{ padding: '10px' }}>
           <Tour match={match}/>
-        </ul>,
+        </ul>
       )}
     </div>
   );

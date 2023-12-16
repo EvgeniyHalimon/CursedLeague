@@ -8,6 +8,7 @@ import { makeRoundRobinPairings } from '../shared/utils';
 const PlayersForm = () => {
   const id = useId();
   const { players } = useAppSelector((state) => state.matchmaking);
+  console.log('🚀 ~ file: PlayersForm.tsx:11 ~ PlayersForm ~ players:', players);
   const action = useActions();
 
   const addPlayers = () => {
